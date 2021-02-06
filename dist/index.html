@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Save Text File</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" class="form">
+        <h2>Enter the values for the Pure Gas Solver</h2>
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Enter the Dimensions of the Domain</h4>
+        <div class="form-control">
+          <label for="length2">Length in meters</label>
+          <input type="number" step="0.001" id="length2" value="0.600" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="height2">Height in meters</label>
+          <input type="number" step="0.001" id="height2" value="1.200" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="width2">Width in meters</label>
+          <input type="number" step="0.001" id="width2" value="0.050" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Enter the Grid Dimensions of the Domain</h4>
+        <div class="form-control">
+          <label for="nx">Nx</label>
+          <input type="number" id="nx" value="48" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="ny">Ny</label>
+          <input type="number" id="ny" value="65" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="nz">Nz</label>
+          <input type="number" id="nz" value="1" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Gas Details</h4>
+        <div class="form-control">
+          <label for="gasFlowRate">Gas Flow Rate in lpm</label>
+          <input type="number" step="0.1" id="gasFlowRate" value="500.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="densityGas">Density of the Gas</label>
+          <input type="number" step="0.001" id="densityGas" value="1.177" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="viscosityGas">Viscosity of the Gas (&times 10<sup>-5</sup>)</label>
+          <input type="number" step="0.00000001" id="viscosityGas" value="1.983" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Fines Details</h4>
+        <div class="form-control">
+          <label for="finesFlowRate">Fines Mass Flow Rate in kg/m<sup>3</sup>s</label>
+          <input type="number" step="0.01" id="finesFlowRate" value="0.10" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="finesSize">Size of fines particles (&times 10<sup>-6</sup>)</label>
+          <input type="number" step="0.1" id="finesSize" value="100" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="densityFines">Density of the Fines Particles</label>
+          <input type="number" step="0.1" id="densityFines" value="1080.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="viscosityFines">Viscosity of the Fines</label>
+          <input type="number" step="0.1" id="viscosityFines" value="0.8" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Tuyere Details</h4>
+        <div class="form-control">
+          <label for="tuyereHeight">Height of Tuyere from bottom</label>
+          <input type="number" step="0.01" id="tuyereHeight" value="0.20" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="tuyereDia">Diameter of Tuyere opening (&times 10<sup>-3</sup>)</label>
+          <input type="number" step="0.1" id="tuyereDia" value="5.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="tuyereProtrusionDepth">Protrusion depth of the Tuyere</label>
+          <input type="number" step="0.01" id="tuyereProtrusionDepth" value="0.05" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Deadman Region Parameters</h4>
+        <div class="form-block">
+          <input type="checkbox" id="deadman" name="deadman" value="deadman" />
+          <label for="deadman"> Check this box to include Deadman Region Parameters</label><br />
+        </div>
+        <div class="form-control">
+          <label for="deadmanXMin">Minimum X co-ordinate of the Deadman</label>
+          <input type="number" step="0.01" id="deadmanXMin" value="0.03" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="deadmanXMax">Maximum X co-ordinate of the Deadman</label>
+          <input type="number" step="0.01" id="deadmanXMax" value="0.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="deadmanYMin">Minimum Y co-ordinate of the Deadman</label>
+          <input type="number" step="0.01" id="deadmanYMin" value="0.07" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="deadmanYMax">Maximum Y co-ordinate of the Deadman</label>
+          <input type="number" step="0.01" id="deadmanYMax" value="0.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="deadmanAngle">Angle of the Deadman (in degrees)</label>
+          <input type="number" step="0.1" id="deadmanAngle" value="60.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Bed Dynamics (BD_Flag)</h4>
+        <div class="form-block">
+          <label for="bedCorrelation">Voidage and raceway determination</label>
+          <select id="bedCorrelation" name="bedCorrelation">
+            <option value="0" selected>Correlation</option>
+            <option value="1">DEM</option>
+          </select>
+        </div>
+        <div class="form-block">
+          <label for="bedModel">Select Model</label>
+          <select id="bedModel" name="bedModel">
+            <option value="0" selected>Constant voidage model</option>
+            <option value="1">DEM</option>
+          </select>
+        </div>
+        <div class="form-block">
+          <label for="bedModel2">Stationary or Descending bed </label>
+          <select id="bedModel2" name="bedModel2">
+            <option value="0" selected>Stationary</option>
+            <option value="1">Descending bed</option>
+          </select>
+        </div>
+
+        <h4>Constant Voidage Bed (Used if BD_Flag = 0)</h4>
+        <div class="form-control">
+          <label for="domainVoidage">Domain Voidage</label>
+          <input type="number" step="0.01" id="domainVoidage" value="0.40" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="racewayVoidage">Raceway Voidage</label>
+          <input type="number" step="0.01" id="racewayVoidage" value="0.85" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Packed Bed (Used if BD_Flag = 1)</h4>
+        <div class="form-control">
+          <label for="numBedParticles">Number of bed particles</label>
+          <input type="number" id="numBedParticles" value="600" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="numNeighbours">Number of Neighbours</label>
+          <input type="number" id="numNeighbours" value="6" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="particleSize">Size of the particles (&times 10<sup>-3</sup>)</label>
+          <input type="number" step="0.1" id="particleSize" value="10" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="sphericity">Size of the particles</label>
+          <input type="number" step="0.1" id="sphericity" value="1.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="packingMaterialDensity">Density of the Packing material</label>
+          <input type="number" step="0.1" id="packingMaterialDensity" value="2500.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="mark">Mark</label>
+          <input type="number" step="0.01" id="mark" value="1.02" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="coefFriction">Co-efficient of friction</label>
+          <input type="number" step="0.1" id="coefFriction" value="0.3" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="coefRestitution">Co-efficient of Restitution</label>
+          <input type="number" step="0.1" id="coefRestitution" value="0.8" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="coefStiffness">Co-efficient of Stiffness</label>
+          <input type="number" id="coefStiffness" value="1000" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-block">
+          <label for="packingType">Type of Packing</label>
+          <select id="packingType" name="packingType">
+            <option value="1">Structured bed</option>
+            <option value="2" selected>Random bed</option>
+            <option value="3">Corex bed</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="timePacking">Time for packing</label>
+          <input type="number" step="0.01" id="timePacking" value="0.02" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="timeStep">Timestep (&times 10<sup>-6</sup>)</label>
+          <input type="number" step="0.1" id="timeStep" value="1.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Moving Bed</h4>
+        <div class="form-control">
+          <label for="particleRemovalRate">Particle Removal Rate</label>
+          <input type="number" id="particleRemovalRate" value="0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Physical Modelling Constants</h4>
+        <div class="form-control">
+          <label for="g">Acceleration due to gravity</label>
+          <input type="number" step="0.01" id="g" value="9.81" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="c">C mu</label>
+          <input type="number" step="0.01" id="c" value="0.09" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Convergence Parameters</h4>
+        <div class="form-control">
+          <label for="toleSpatConv"
+            >Tolerance spatial convergence for gas flow (&times 10<sup>-3</sup>)</label
+          >
+          <input type="number" step="0.1" id="toleSpatConv" value="1.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="massBalFines">Mass Balance for fine flow (&times 10<sup>-10</sup>)</label>
+          <input type="number" step="0.1" id="massBalFines" value="1.0" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxU">Relax U</label>
+          <input type="number" step="0.01" id="relaxU" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxV">Relax V</label>
+          <input type="number" step="0.01" id="relaxV" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxP">Relax P</label>
+          <input type="number" step="0.01" id="relaxP" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxKE">Relax KE</label>
+          <input type="number" step="0.01" id="relaxKE" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxDE">Relax DE</label>
+          <input type="number" step="0.01" id="relaxDE" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="relaxEPFD">Relax EPFD</label>
+          <input type="number" step="0.01" id="relaxEPFD" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaU">Omega U for gas</label>
+          <input type="number" step="0.01" id="omegaU" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaV">Omega V for gas</label>
+          <input type="number" step="0.01" id="omegaV" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaP">Omega P for gas</label>
+          <input type="number" step="0.01" id="omegaP" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaKE">Omega KE for gas</label>
+          <input type="number" step="0.01" id="omegaKE" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaDE">Omega DE for gas</label>
+          <input type="number" step="0.01" id="omegaDE" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaUFines">Omega U for fines</label>
+          <input type="number" step="0.01" id="omegaUFines" value="0.35" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaVFines">Omega V for fines</label>
+          <input type="number" step="0.01" id="omegaVFines" value="0.99" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaKEFines">Omega KE for fines</label>
+          <input type="number" step="0.01" id="omegaKEFines" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="omegaDEFines">Omega DE for fines</label>
+          <input type="number" step="0.01" id="omegaDEFines" value="0.75" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <h4>Turbulence Modelling Parameters</h4>
+        <div class="form-control">
+          <label for="c1">C1</label>
+          <input type="number" step="0.01" id="c1" value="1.44" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="c2">C2</label>
+          <input type="number" step="0.01" id="c2" value="1.92" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="sigmaK">Sigma k</label>
+          <input type="number" step="0.01" id="sigmaK" value="1.00" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="sigmaE">Sigma e</label>
+          <input type="number" step="0.01" id="sigmaE" value="1.22" />
+          <!-- <small>Error Message</small> -->
+        </div>
+        <div class="form-control">
+          <label for="turbulentMixing">Turbulent Mixing Length</label>
+          <input type="number" step="0.001" id="turbulentMixing" value="0.002" />
+          <!-- <small>Error Message</small> -->
+        </div>
+
+        <input type="reset" />
+        <!-- <input type="submit" value="Save data to file" /> -->
+        <button type="submit">Save data to file</button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

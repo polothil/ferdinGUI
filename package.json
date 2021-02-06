@@ -1,0 +1,15 @@
+{
+  "name": "ferdin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "deploy": "gh-pages -dist"
+  },
+  "author": "Polothil",
+  "license": "ISC",
+  "homepage": "https://polothil.github.io/ferdinGUI",
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
